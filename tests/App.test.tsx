@@ -13,9 +13,20 @@ describe('App', () => {
         });
     });
     describe('should calculate correctly', () => {
-        it('should do basic calculations', () => {
-
+        it.each`
+        firstButtonPress   |   secondButtonPress   |  calculationType           |  calculationResult
+        ${'1'}             |   ${'2'}              |  ${CalculationTypes.ADD}   |  ${'3'}
+        `('should do basic calculations', () => {
+            render(<App />);
+            
         });
         // Add calculation tests here (these will be best for mutations)
     })
 });
+
+export enum CalculationTypes {
+    ADD,
+    SUB,
+    DIV,
+    MUL
+};

@@ -25,26 +25,26 @@ function App() {
   };
 
   return (
-    <div className="calculator">
-      <div className="display">{result || '0'}</div>
-      <div className="buttons">
-        <button onClick={() => handleClick('7')}>7</button>
-        <button onClick={() => handleClick('8')}>8</button>
-        <button onClick={() => handleClick('9')}>9</button>
-        <button onClick={() => handleClick('+')}>+</button>
-        <button onClick={() => handleClick('4')}>4</button>
-        <button onClick={() => handleClick('5')}>5</button>
-        <button onClick={() => handleClick('6')}>6</button>
-        <button onClick={() => handleClick('-')}>-</button>
-        <button onClick={() => handleClick('1')}>1</button>
-        <button onClick={() => handleClick('2')}>2</button>
-        <button onClick={() => handleClick('3')}>3</button>
-        <button onClick={() => handleClick('*')}>*</button>
-        <button onClick={() => handleClick('0')}>0</button>
-        <button onClick={() => handleClick('.')}>.</button>
-        <button onClick={calculateResult}>=</button>
-        <button onClick={() => handleClick('/')}>/</button>
-        <button onClick={clearResult}>C</button>
+    <div className="calculator" data-testid="calculator-wrapper">
+      <div className="display" data-testid="calculator-result" >{result || '0'}</div>
+      <div className="buttons" data-testid="calculator-buttons">
+        <button onClick={() => handleClick('7')} data-testid="calculator-button-7">7</button>
+        <button onClick={() => handleClick('8')} data-testid="calculator-button-8">8</button>
+        <button onClick={() => handleClick('9')} data-testid="calculator-button-9">9</button>
+        <button onClick={() => handleClick('+')} data-testid="calculator-button-add">+</button>
+        <button onClick={() => handleClick('4')} data-testid="calculator-button-4">4</button>
+        <button onClick={() => handleClick('5')} data-testid="calculator-button-5">5</button>
+        <button onClick={() => handleClick('6')} data-testid="calculator-button-6">6</button>
+        <button onClick={() => handleClick('-')} data-testid="calculator-button-sub">-</button>
+        <button onClick={() => handleClick('1')} data-testid="calculator-button-1">1</button>
+        <button onClick={() => handleClick('2')} data-testid="calculator-button-2">2</button>
+        <button onClick={() => handleClick('3')} data-testid="calculator-button-3">3</button>
+        <button onClick={() => handleClick('*')} data-testid="calculator-button-mult">*</button>
+        <button onClick={() => handleClick('0')} data-testid="calculator-button-0">0</button>
+        <button onClick={() => handleClick('.')} data-testid="calculator-button-decimal">.</button>
+        <button onClick={calculateResult} data-testid="calculator-button-equals">=</button>
+        <button onClick={() => handleClick('/')} data-testid="calculator-button-div">/</button>
+        <button onClick={clearResult} data-testid="calculator-button-clear">C</button>
       </div>    
     </div>
   );
