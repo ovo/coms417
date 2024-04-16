@@ -18,6 +18,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
+    "@stryker-mutator/vitest-runner": "^8.2.6",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.2",
     "@types/react": "^18.2.66",
