@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="calculator">
-      <div className="display">{result || '0'}</div>
+      <div className="display" role="display">{result || '0'}</div>
       <div className="buttons">
         <button onClick={() => handleClick('7')}>7</button>
         <button onClick={() => handleClick('8')}>8</button>
