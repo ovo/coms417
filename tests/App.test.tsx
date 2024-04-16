@@ -5,9 +5,11 @@ import { describe, expect, it } from 'vitest';
 
 
 describe('App', () => {
-  it('renders headline', () => {
-    render(<App />);
-    const headline = screen.getByText(/It works and you found me!/i);
-    expect(headline).toBeDefined();
-  });
+    describe('should render correctly', () => {
+        it.each(['1','2','3','4','5','6','7','8','9','0', '/', '*', '+', '-'])('renders all button text', (buttonText: string) => {
+            render(<App />);
+            const headline = screen.findAllByText(buttonText);
+            expect(headline).toBeDefined();
+        });
+    })
 });
