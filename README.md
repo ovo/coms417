@@ -26,3 +26,13 @@ Start
 ```
 npm start
 ```
+Test
+```
+npm run test
+```
+
+## Generate reports
+You can use [stryker](https://stryker-mutator.io) to generate reports using mutation testing
+```
+npx stryker run
+```
