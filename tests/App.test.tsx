@@ -11,5 +11,8 @@ describe('App', () => {
             const headline = screen.findAllByText(buttonText);
             expect(headline).toBeDefined();
         });
+    });
+    describe('should calculate correctly', () => {
+        // Add calculation tests here (these will be best for mutations)
     })
 });
