@@ -13,6 +13,9 @@ describe('App', () => {
         });
     });
     describe('should calculate correctly', () => {
+        it('should do basic calculations', () => {
+
+        });
         // Add calculation tests here (these will be best for mutations)
     })
 });
