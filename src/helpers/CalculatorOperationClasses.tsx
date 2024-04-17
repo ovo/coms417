@@ -15,7 +15,6 @@ export function evalFunction(functionString: string): number {
     // Must evaluate in PEMDAS order
     // Find all occurances of multiplicaton, evaluate them, then update the function
     let multAppearances = functionString.match(/[0-9]+\*[0-9]+/);
-
     multAppearances?.forEach(fn => {
         let operators = fn.split('*');
         let result: number = (+operators[0]) * (+operators[1]);
@@ -24,7 +23,6 @@ export function evalFunction(functionString: string): number {
 
     // Find all occurances of division, evaluate them, then update the function
     let divAppearances = functionString.match(/[0-9]+\/[0-9]+/);
-    console.log('div', divAppearances);
     divAppearances?.forEach(fn => {
         let operators = fn.split('/');
         let result: number = (+operators[0]) / (+operators[1]);
@@ -33,7 +31,6 @@ export function evalFunction(functionString: string): number {
 
     // Find all occurances of addition, evaluate them, then update the function
     let addAppearances = functionString.match(/[0-9]+\+[0-9]+/);
-
     addAppearances?.forEach(fn => {
         let operators = fn.split('+');
         let result: number = (+operators[0]) + (+operators[1]);
