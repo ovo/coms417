@@ -14,6 +14,7 @@ function App() {
   // Evaluate current state
   const calculateResult = () => {
     try {
+      // Attempt to parse a result from the current string
       setResult(evalFunction(result).toString());
     } catch (error) {
       setResult('Error');
