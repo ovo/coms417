@@ -1,12 +1,18 @@
-export function evalFunction(functionString: string): number {
+/**
+ * This function takes in a string containing numbers, and the operators +, -, /, and * and attempts to evaluate a resulting number
+ * @param functionString the string to parse and evaluate a result from
+ * @returns 'Error' if the function is invalid, and the resulting number if the function is valid
+ */
+export function evalFunction(functionString: string): number | string {
+    // If nothing has been entered, no need to error or evaluate, just return 0
     if(functionString.length == 0) {
         return 0;
     }
 
     // Ensure that the function starts with a number
     if(!functionString.match(/^[0-9]/)) {
-        // Swap this to return error possibly
-        return 0;
+        // Return 'Error' so that the user can't attempt to evaluate a function starting with an operator
+        return 'Error';
     }
 
     // Remove all whitespace to ensure consistency in parsing.
