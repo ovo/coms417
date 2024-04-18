@@ -10,13 +10,10 @@ export function evalFunction(functionString: string): number | string {
     }
 
     // Ensure that the function starts with a number
-    if(!functionString.match(/^[0-9]/)) {
+    if(!functionString.match(/^[0-9]/) || !functionString.match(/[0-9]$/)) {
         // Return 'Error' so that the user can't attempt to evaluate a function starting with an operator
         return 'Error';
     }
-
-    // Remove all whitespace to ensure consistency in parsing.
-    functionString = functionString.replace(' ', '');
 
     // Must evaluate in PEMDAS order
     // Find all occurances of multiplicaton, evaluate them, then update the function
@@ -33,6 +30,9 @@ export function evalFunction(functionString: string): number | string {
         let divAppearance = functionString.match(/[0-9]+\.?[0-9]*\/[0-9]+\.?[0-9]*/)![0];
         // Every matching appearance will be of the form {NUMBER}/{NUMBER} meaning splitting it by '/' will always result in the needed operators
         let operators = divAppearance.split('/');
+        if(operators[1] == '0') {
+            return 'Div By 0 Error';
+        }
         let result: number = (+operators[0]) / (+operators[1]);
         functionString = functionString.replace(divAppearance, result.toString());
     }
@@ -59,10 +59,6 @@ export function evalFunction(functionString: string): number | string {
         if(operators.length == 2) {
             operator1 = (+operators[0]);
             operator2 = (+operators[1]);
-        // Both nums negative
-        } else if(operators.length == 4) {
-            operator1 = -1 * (+operators[1]);
-            operator2 = -1 * (+operators[3]);
         } else {
             // First num negative
             if(operators[0] == '') {
@@ -79,5 +75,8 @@ export function evalFunction(functionString: string): number | string {
     }
 
     // Parse the result to int and return
+    if(Number.isNaN(+functionString)) {
+        return 'Error';
+    }
     return +functionString;
 }

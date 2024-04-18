@@ -14,17 +14,9 @@ npm i
 ```
 
 ## Running and building
-Run the dev server
+Start the server and build the frontend
 ```
-npm run dev
-```
-Build
-```
-npm run build
-```
-Start
-```
-npm start
+npm run start:all
 ```
 Test
 ```
