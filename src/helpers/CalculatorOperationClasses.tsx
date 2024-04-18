@@ -10,7 +10,7 @@ export function evalFunction(functionString: string): number | string {
     }
 
     // Ensure that the function starts with a number
-    if(!functionString.match(/^[0-9]/)) {
+    if(!functionString?.match(/^[0-9]/)) {
         // Return 'Error' so that the user can't attempt to evaluate a function starting with an operator
         return 'Error';
     }
