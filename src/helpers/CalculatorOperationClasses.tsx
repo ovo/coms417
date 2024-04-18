@@ -20,18 +20,17 @@ export function evalFunction(functionString: string): number | string {
 
     // Must evaluate in PEMDAS order
     // Find all occurances of multiplicaton, evaluate them, then update the function
-    while(functionString.match(/[0-9]+\*[0-9]+/) !== null) {
-        let multAppearance = functionString.match(/[0-9]+\*[0-9]+/)![0];
+    while(functionString.match(/[0-9]+\.?[0-9]*\*[0-9]+\.?[0-9]*/) !== null) {
+        let multAppearance = functionString.match(/[0-9]+\.?[0-9]*\*[0-9]+\.?[0-9]*/)![0];
         // Every matching appearance will be of the form {NUMBER}*{NUMBER} meaning splitting it by '*' will always result in the needed operators
         let operators = multAppearance.split('*');
         let result: number = (+operators[0]) * (+operators[1]);
         functionString = functionString.replace(multAppearance, result.toString());
-        console.log(functionString);
     }
 
     // Find all occurances of division, evaluate them, then update the function
-    while(functionString.match(/[0-9]+\/[0-9]+/) !== null) {
-        let divAppearance = functionString.match(/[0-9]+\/[0-9]+/)![0];
+    while(functionString.match(/[0-9]+\.?[0-9]*\/[0-9]+\.?[0-9]*/) !== null) {
+        let divAppearance = functionString.match(/[0-9]+\.?[0-9]*\/[0-9]+\.?[0-9]*/)![0];
         // Every matching appearance will be of the form {NUMBER}/{NUMBER} meaning splitting it by '/' will always result in the needed operators
         let operators = divAppearance.split('/');
         let result: number = (+operators[0]) / (+operators[1]);
@@ -39,8 +38,8 @@ export function evalFunction(functionString: string): number | string {
     }
 
     // Find all occurances of addition, evaluate them, then update the function
-    while(functionString.match(/[0-9]+\+[0-9]+/) !== null) {
-        let addAppearance = functionString.match(/[0-9]+\+[0-9]+/)![0];
+    while(functionString.match(/[0-9]+\.?[0-9]*\+[0-9]+\.?[0-9]*/) !== null) {
+        let addAppearance = functionString.match(/[0-9]+\.?[0-9]*\+[0-9]+\.?[0-9]*/)![0];
         // Every matching appearance will be of the form {NUMBER}+{NUMBER} meaning splitting it by '+' will always result in the needed operators
         let operators = addAppearance.split('+');
         let result: number = (+operators[0]) + (+operators[1]);
@@ -48,9 +47,9 @@ export function evalFunction(functionString: string): number | string {
     }
 
     // Find all occurances of subtraction, evaluate them, then update the function
-    while(functionString.match(/\-?[0-9]+\-\-?[0-9]+/) !== null) {
+    while(functionString.match(/\-?[0-9]+\.?[0-9]*\-\-?[0-9]+\.?[0-9]*/) !== null) {
         // Notice that because we are dealing with subtraction now, the result could be negative. We must handle that in the Regex
-        let subAppearance = functionString.match(/\-?[0-9]+\-\-?[0-9]+/)![0];
+        let subAppearance = functionString.match(/\-?[0-9]+\.?[0-9]*\-\-?[0-9]+\.?[0-9]*/)![0];
         // Every matching appearance will be of the form {NUMBER}-{NUMBER}, {NUMBER}--{NUMBER}, -{NUMBER}-{NUMBER}, or -{NUMBER}--{NUMBER} meaning that splitting by '-' will give us the operators we need, and have values of '' if the next number should be corrected to negative
         let operators = subAppearance.split('-');
         let operator1: number;
