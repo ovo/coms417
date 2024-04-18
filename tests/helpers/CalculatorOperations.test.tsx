@@ -5,21 +5,29 @@ describe("CalculatorHelper", () => {
   describe("should do basic calculations correctly", () => {
     it.each`
     testFunction    |   expectedResultingNumber
-    ${'5+2'}        |   ${7}
-    ${'5+0'}        |   ${5}
-    ${'5+456'}      |   ${461}
-    ${'456+5'}      |   ${461}
-    ${'5-2'}        |   ${3}
-    ${'5-0'}        |   ${5}
-    ${'5-45'}       |   ${-40}
-    ${'45-5'}       |   ${40}
-    ${'5*2'}        |   ${10}
-    ${'5*0'}        |   ${0}
-    ${'5*45'}       |   ${225}
-    ${'45*5'}       |   ${225}
-    ${'5/2'}        |   ${2.5}
-    ${'5/45'}       |   ${0.1111111111111111}
-    ${'45/5'}       |   ${9}
+    ${'5+2'}          |   ${7}
+    ${'5+0'}          |   ${5}
+    ${'5+456'}        |   ${461}
+    ${'456+5'}        |   ${461}
+    ${'5-2'}          |   ${3}
+    ${'5-0'}          |   ${5}
+    ${'5-45'}         |   ${-40}
+    ${'45-5'}         |   ${40}
+    ${'5*2'}          |   ${10}
+    ${'5*0'}          |   ${0}
+    ${'5*45'}         |   ${225}
+    ${'45*5'}         |   ${225}
+    ${'5/2'}          |   ${2.5}
+    ${'5/45'}         |   ${0.1111111111111111}
+    ${'45/5'}         |   ${9}
+    ${'5.7+6.8'}      |   ${12.5}
+    ${'58.79+64.86'}  |   ${123.65}
+    ${'5.7-6.8'}      |   ${-1.0999999999999996}
+    ${'55.75-64.85'}  |   ${-9.099999999999994}
+    ${'5.7/6.8'}      |   ${0.8382352941176471}
+    ${'55.75/64.83'}  |   ${0.8599413851611908}
+    ${'5.7*6.8'}      |   ${38.76}
+    ${'55.7*62.83'}   |   ${3499.631}
     `("should return the calculated number for valid operator", (params: {testFunction: string, expectedResultingNumber: number}) => {
     const result: string | number = evalFunction(params.testFunction);
     expect(result).toEqual(params.expectedResultingNumber);
@@ -65,6 +73,14 @@ describe("CalculatorHelper", () => {
         ${'.1-3'}
         ${'1-3.'}
         ${'.1-3.'}
+        ${'1++3'}
+        ${'1++3++5'}
+        ${'1//3'}
+        ${'1/3//5'}
+        ${'1**3'}
+        ${'1..*3'}
+        ${'1..*3..'}
+        ${'1*3..'}
     `("should return Error when starting with operator", (params: {testFunction: string}) => {
       const result: string | number = evalFunction(params.testFunction);
       expect(result).toEqual("Error");

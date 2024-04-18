@@ -75,5 +75,8 @@ export function evalFunction(functionString: string): number | string {
     }
 
     // Parse the result to int and return
+    if(Number.isNaN(+functionString)) {
+        return 'Error';
+    }
     return +functionString;
 }
