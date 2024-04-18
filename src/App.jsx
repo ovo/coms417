@@ -1,5 +1,6 @@
 import './App.css'
 import { useState } from 'react';
+import { evalFunction } from './helpers/CalculatorOperationClasses'
 
 function App() {
   // State storing the current value of the calculation
@@ -13,7 +14,8 @@ function App() {
   // Evaluate current state
   const calculateResult = () => {
     try {
-      setResult(eval(result).toString());
+      // Attempt to parse a result from the current string
+      setResult(evalFunction(result).toString());
     } catch (error) {
       setResult('Error');
     }
